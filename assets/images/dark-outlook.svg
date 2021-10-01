@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="icon" width="20" height="20" transform="translate(218 23)" fill="#333870"/>
+    </clipPath>
+  </defs>
+  <g id="Mask_Group_2" data-name="Mask Group 2" transform="translate(-218 -23)" clip-path="url(#clip-path)">
+    <g id="outlook_2_" data-name="outlook (2)" transform="translate(218 23)">
+      <path id="Path_12" data-name="Path 12" d="M19.375,4.375h-8.75a.625.625,0,0,0,0,1.25h6.929l-3.84,2.986L10.96,6.86l-.67,1.055L13.415,9.9a.626.626,0,0,0,.719-.034L18.75,6.278v8.1H10.625a.625.625,0,0,0,0,1.25h8.75A.625.625,0,0,0,20,15V5A.625.625,0,0,0,19.375,4.375Z" fill="rgba(51,56,112,0.5)"/>
+      <path id="Path_13" data-name="Path 13" d="M11.024.769A.614.614,0,0,0,10.51.637L.51,2.512A.623.623,0,0,0,0,3.125v13.75a.624.624,0,0,0,.51.614l10,1.875a.588.588,0,0,0,.115.011.625.625,0,0,0,.625-.625V1.25A.623.623,0,0,0,11.024.769Z" fill="#333870"/>
+      <path id="Path_14" data-name="Path 14" d="M5.625,14.375c-1.723,0-3.125-1.682-3.125-3.75s1.4-3.75,3.125-3.75S8.75,8.558,8.75,10.625,7.347,14.375,5.625,14.375Zm0-6.25c-1.034,0-1.875,1.121-1.875,2.5s.841,2.5,1.875,2.5S7.5,12,7.5,10.625,6.659,8.125,5.625,8.125Z" fill="rgba(255,255,255,0.7)"/>
+    </g>
+  </g>
+</svg>

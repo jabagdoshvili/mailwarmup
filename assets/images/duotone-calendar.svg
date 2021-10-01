@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="17.5" height="19.5" viewBox="0 0 17.5 19.5">
+  <g id="duotone-calendar" transform="translate(-3.25 -2.25)">
+    <path id="Path_7" data-name="Path 7" d="M4,19a2,2,0,0,0,2,2H18a2,2,0,0,0,2-2V11H4Z" fill="#fff" opacity="0.15"/>
+    <path id="Path_8" data-name="Path 8" d="M15,3V7M9,3V7M4,11H20m0,0v8a2,2,0,0,1-2,2H6a2,2,0,0,1-2-2V7A2,2,0,0,1,6,5H18a2,2,0,0,1,2,2Z" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+  </g>
+</svg>

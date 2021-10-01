@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="17.381" height="17.381" viewBox="0 0 17.381 17.381">
+  <g id="icon" transform="translate(-455.586 -234.586)">
+    <path id="duotone-arrow-left-small" d="M0,7.276m0,0L7.276,0M0,7.276l7.276,7.276" transform="translate(457 243.276) rotate(-90)" fill="none" stroke="#fd8967" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <path id="duotone-arrow-left-small-2" data-name="duotone-arrow-left-small" d="M0,7.276m0,0,7.276,7.276M0,7.276,7.276,0" transform="translate(471.552 243.276) rotate(90)" fill="none" stroke="#fd8967" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+  </g>
+</svg>

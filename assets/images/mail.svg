@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="19.5" height="15.5" viewBox="0 0 19.5 15.5">
+  <g id="duotone-mail" transform="translate(-2.25 -4.25)">
+    <path id="Path_18" data-name="Path 18" d="M21,18V6a1,1,0,0,0-.293-.707L20.5,5.5l-7.086,7.086a2,2,0,0,1-2.828,0L3.5,5.5l-.207-.207A1,1,0,0,0,3,6V18a1,1,0,0,0,1,1H20A1,1,0,0,0,21,18Z" fill="#fd8967" opacity="0.15"/>
+    <path id="Path_19" data-name="Path 19" d="M3.5,5.5l7.086,7.086a2,2,0,0,0,2.828,0L20.5,5.5M4,19H20a1,1,0,0,0,1-1V6a1,1,0,0,0-1-1H4A1,1,0,0,0,3,6V18A1,1,0,0,0,4,19Z" fill="none" stroke="#fd8967" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+  </g>
+</svg>
