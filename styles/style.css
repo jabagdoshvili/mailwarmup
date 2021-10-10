@@ -76,6 +76,55 @@ input::placeholder {
   width: 100%;
 }
 
+.flow {
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(51, 56, 112, 0.8);
+  position: fixed;
+  z-index: 9999;
+  display: none;
+}
+
+.flow.visible {
+  display: block;
+}
+
+.flow .modals {
+  width: 45rem;
+  padding: 1.5625rem;
+  border-radius: 1rem;
+  background-color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  max-height: 97vh;
+}
+
+.flow .modals .modal-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.flow .modals .modal-title h2 {
+  color: black;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.flow .modals .modal-title .close {
+  cursor: pointer;
+}
+
 .overflow {
   width: 100%;
   height: 100vh;

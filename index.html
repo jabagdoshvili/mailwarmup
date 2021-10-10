@@ -8,20 +8,36 @@
     <title>Mail Warm Up</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles/calendar/style.css">
-    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="./styles/calendar/style.css">
+    <link rel="stylesheet" href="./styles/style.css">
 </head>
 
 <body>
 
     <!-- POPUPS -->
 
+    <div class="flow delete-popup">
+        <div class="modals">
+            <div class="modal-title">
+                <h2>Delete Email?</h2>
+                <div class="close">
+                    <img src="./assets/images/close.svg" alt="">
+                </div>
+            </div>
+            <div class="modal-body">
+                <p>Would you like to delete this email?</p>
+                <div class="no">No</div>
+                <div class="yes">Yes</div>
+            </div>
+        </div>
+    </div>
+
     <div class="overflow mail-inside">
         <div class="modals accordion-modal">
             <div class="modal-title">
                 <h2>Modal name</h2>
                 <div class="close">
-                    <img src="/assets/images/close.svg" alt="">
+                    <img src="./assets/images/close.svg" alt="">
                 </div>
             </div>
             <div class="modal-menu">
@@ -103,38 +119,38 @@
             <div class="modal-title">
                 <h2>Connect New Email</h2>
                 <div class="close">
-                    <img src="/assets/images/close.svg" alt="">
+                    <img src="./assets/images/close.svg" alt="">
                 </div>
             </div>
             <div class="contact-list">
                 <ul>
                     <li>
                         <div class="list-icon">
-                            <img src="/assets/images/google.svg" alt="">
+                            <img src="./assets/images/google.svg" alt="">
                         </div>
                         Google
                     </li>
                     <li>
                         <div class="list-icon">
-                            <img src="/assets/images/outlook.svg" alt="">
+                            <img src="./assets/images/outlook.svg" alt="">
                         </div>
                         Outlook
                     </li>
                     <li>
                         <div class="list-icon">
-                            <img src="/assets/images/office.svg" alt="">
+                            <img src="./assets/images/office.svg" alt="">
                         </div>
                         Office 365
                     </li>
                     <li>
                         <div class="list-icon">
-                            <img src="/assets/images/icloud.svg" alt="">
+                            <img src="./assets/images/icloud.svg" alt="">
                         </div>
                         iCloud
                     </li>
                     <li>
                         <div class="list-icon">
-                            <img src="/assets/images/yahoo.svg" alt="">
+                            <img src="./assets/images/yahoo.svg" alt="">
                         </div>
                         Yahoo
                     </li>
@@ -151,7 +167,7 @@
             <div class="modal-title">
                 <h2>Add inbox</h2>
                 <div class="close">
-                    <img src="/assets/images/close.svg" alt="">
+                    <img src="./assets/images/close.svg" alt="">
                 </div>
             </div>
             <div class="modal-menu">
@@ -247,21 +263,21 @@
                         <form>
                             <div class="row">
                                 <div class="col">
-                                    <label for="">Starting Baseline <img src="/assets/images/round.svg" alt=""></label>
+                                    <label for="">Starting Baseline <img src="./assets/images/round.svg" alt=""></label>
                                     <input type="text" class="form-control" name="starting_baseline">
                                 </div>
                                 <div class="col">
-                                    <label for="">Increase (Per Day) <img src="/assets/images/round.svg" alt=""></label>
+                                    <label for="">Increase (Per Day) <img src="./assets/images/round.svg" alt=""></label>
                                     <input type="mail" class="form-control" name="increase_per_day">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <label for="">Max Send (Per Day) <img src="/assets/images/round.svg" alt=""></label>
+                                    <label for="">Max Send (Per Day) <img src="./assets/images/round.svg" alt=""></label>
                                     <input type="text" class="form-control" name="max_sends_per_day">
                                 </div>
                                 <div class="col">
-                                    <label for="">Reply rate % <img src="/assets/images/round.svg" alt=""></label>
+                                    <label for="">Reply rate % <img src="./assets/images/round.svg" alt=""></label>
                                     <input type="text" class="form-control" name="reply_rate_%">
                                 </div>
                             </div>
@@ -281,24 +297,24 @@
     <header>
         <div class="logo-area">
             <a href="">
-                <img src="/assets/images/logo.svg" alt="">
+                <img src="./assets/images/logo.svg" alt="">
             </a>
         </div>
         <div class="profile-area">
             <ul>
                 <li>
-                    0/3000
-                    <img src="/assets/images/mail.svg" alt="">
+                    0/0
+                    <img src="./assets/images/mail.svg" alt="">
                 </li>
                 <li class="dropdown">
                     Isak Johannesson
-                    <img src="/assets/images/down.svg" alt="">
+                    <img src="./assets/images/down.svg" alt="">
                     <ul class="filter-dropdown-header">
-                        <li> <img src="/assets/images/headphones.svg" alt=""> <img src="/assets/images/headphonesv2.svg"
+                        <li> <img src="./assets/images/headphones.svg" alt=""> <img src="./assets/images/headphonesv2.svg"
                                 alt="">Support <i class="fa fa-external-link" aria-hidden="true"></i></li>
-                        <li> <img src="/assets/images/settings.svg" alt=""> <img src="/assets/images/settingsv2.svg"
+                        <li> <img src="./assets/images/settings.svg" alt=""> <img src="./assets/images/settingsv2.svg"
                                 alt="">Settings <i class="fa fa-external-link" aria-hidden="true"></i></li>
-                        <li> <img src="/assets/images/login.svg" alt=""> <img src="/assets/images/loginv2.svg"
+                        <li> <img src="./assets/images/login.svg" alt=""> <img src="./assets/images/loginv2.svg"
                                 alt="">Logout</li>
                     </ul>
                 </li>
@@ -316,13 +332,13 @@
         <div class="search-tab">
             <input type="text" placeholder="Search…" name="search">
             <div class="filter-icon">
-                <img src="/assets/images/duotone-search.svg" alt="">
+                <img src="./assets/images/duotone-search.svg" alt="">
             </div>
         </div>
         <div class="filter-tab calendar-tab">
             <input type="text" placeholder="Select a time period" name="date" id="reportrange" autocomplete="off">
             <div class="filter-icon">
-                <img src="/assets/images/duotone-calendar.svg" alt="">
+                <img src="./assets/images/duotone-calendar.svg" alt="">
             </div>
             <div class="calendar-wrapper">
 
@@ -331,7 +347,7 @@
         <div class="filter-tab status-tab">
             <span>Filter by status</span>
             <div class="filter-icon">
-                <img src="/assets/images/duotone-arrow-left-small.svg" alt="">
+                <img src="./assets/images/duotone-arrow-left-small.svg" alt="">
             </div>
             <ul class="filter-dropdown">
                 <li>All emails</li>
@@ -368,9 +384,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
         </script>
-    <script src="/scripts/calendar.js"></script>
-    <script src="/scripts/app.js"></script>
-    <script src="/scripts/main.js"></script>
+    <script src="./scripts/calendar.js"></script>
+    <script src="./scripts/app.js"></script>
+    <script src="./scripts/main.js"></script>
 
 </body>
 

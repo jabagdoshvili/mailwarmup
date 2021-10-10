@@ -23,17 +23,30 @@ $.fn.searchGridData = function (text) {
 
 let filterdByDate = false
 let fileredByStatus = 0
-
+let response = []
 function getTableData() {
     get_all_user_emails({
         "order_by": "asc", //desc
-        "current_results_from": "100",
-        "current_results_to": "120"
+        "current_results_from": "0",
+        "current_results_to": "12"
     }, resp => {
-        setGrid(resp.data.emails)
+        response = resp.data.emails
+        setGrid(response)
     })
 }
-getTableData()
+
+authenticate({   
+    'pass_phrase' : 'fkm2gkWzAVn3YFuHUWUN',
+    "user_id": "dummy1",
+    'is_trial' : 'Y',
+    'plan_id' : 2,
+    'plan_quota' : 50,
+    'plan_expire_date' : '01-02-2021'
+}, (resp)=> {
+    $('body').attr('data-zoro_token', resp.data.token)
+    getTableData()
+})
+
 
 
 
@@ -90,15 +103,17 @@ function setGrid(data) {
                 render: function (el, type, item) {
                     return `                        
                         <label class="switch">
-                            <input type="checkbox" ${el == 'Y' ? 'checked' : ''} name="is_paused" data-id="${item.id}"/>
+                            <input type="checkbox" ${el == 'Y' ? 'checked' : ''} name="is_paused" data-id="${item['_id']}"/>
                             <div class="slider round"></div>
                         </label>
+                        
+                        <div class="delete" data-id="${item['_id']}">X</div>
                     `
                 }
             },
         ],
         createdRow: function (row, data, dataIndex) {
-            let id = data.id
+            let id = data['_id']
             $(row).attr('data-id', id)
         },
     })
@@ -186,8 +201,8 @@ void
 
             if (chosenStatusIndex == 0) setGrid(filerDateRange())
             else {
-                chosenStatusIndex = chosenStatusIndex == 1
-                setGrid(filerDateRange().filter(e => e.status == chosenStatusIndex))
+                chosenStatusIndex = chosenStatusIndex == 1 ? 'Y' : 'N'
+                setGrid(filerDateRange().filter(e => e.is_paused == chosenStatusIndex))
             }
 
 
@@ -216,14 +231,14 @@ void
         })
 
         $(document).on('click', 'tbody tr > td:not(:last-child)', function (e) {
-            let log_id = $(this).closest('tr').data('id')
+            let send_mail_id_pk = $(this).closest('tr').data('id')
             var target = $(e.target);
             if (target.is('.round')) {
                 $('.mail-inside').removeClass('visible')
             } else {
                 $('.mail-inside').addClass('visible')
 
-                get_email_log({ log_id }, resp => {
+                get_email_log({ send_mail_id_pk }, resp => {
                     console.log(resp.data);
                 })
             }
@@ -338,10 +353,19 @@ void
         // delete user email
         $(document).on('click', '.delete', function () {
             let id = $(this).data('id')
-            delete_user_email(id, resp => {
+
+            // $('.delete-popup').addClass('visible')
+
+            delete_user_email({id}, resp => {
                 getTableData()
             })
         })
 
+        // $(document).on('click', 'div.no', function () {
+        //     let id = $(this).data('id')
+        //     $('.delete-popup').removeClass('visible')
+
+
+        // })
 
     }()
