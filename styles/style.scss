@@ -89,6 +89,8 @@ input {
             display: flex;
             align-items: center;
             justify-content: space-between;
+            padding-bottom: 1.5625rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
             h2 {
                 color: black;
                 font-size: 1.5rem;
@@ -97,6 +99,40 @@ input {
             }
             .close {
                 cursor: pointer;
+            }
+        }
+        .modal-body {
+            p {
+                font-size: 14px;
+                color: black;
+                padding: 50px 0;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+                margin-bottom: 30px;
+            }
+            .actions {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                div {
+                    font-size: 0.875rem;
+                    font-weight: 700;
+                    width: 8.75rem;
+                    height: 3.5rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 16px;
+                    cursor: pointer;
+                    &:first-child {
+                        background-color: rgba(253, 137, 103, 0.1);
+                        color: #FD8967;
+                    }
+                    &:last-child {
+                        margin-left: 1.25rem;
+                        background-color: #FD8967;
+                        color: white;
+                    }
+                }
             }
         }
     }
@@ -360,6 +396,13 @@ header {
     align-items: center;
     position: relative;
     -moz-appearance: initial;
+    .logo-area {
+        a {
+            img {
+                height: 35px;
+            }
+        }
+    }
     &::after {
         content: "";
         height: 0.0625rem;
@@ -841,6 +884,35 @@ header {
             td:last-child,
             th:last-child {
                 border-radius: 0 1rem 1rem 0;
+                display: flex;
+                align-items: center;
+                position: relative;
+                .delete {
+                    position: absolute;
+                    right: 1.25rem;
+                    .sm-popup {
+                        position: absolute;
+                        bottom: 0;
+                        background-image: url('/assets/images/delete.png');
+                        background-position: center;
+                        width: 115px;
+                        height: 60px;
+                        background-size: cover;
+                        align-items: center;
+                        justify-content: center;
+                        z-index: 999;
+                        bottom: -70px;
+                        left: -90px;
+                        display: none;
+                        &.active {
+                            display: flex;
+                        }
+                        p {
+                            padding: 0;
+                            margin: 0;
+                        }
+                    }
+                }
             }
 
             .rate {
@@ -999,15 +1071,29 @@ input:checked + .slider {
 
 }
 
+.dataTables_empty {
+    flex-direction: column;
+    align-items: center;
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.40);
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 35%;
+    span {
+        font-size: 18px;
+        color: black;
+    }
+}
+
 .loader {
-    position: fixed;
+    position: absolute;
     left: 0;
     top: 0;
     display: flex;
-    background: #33387091;
     height: 100%;
     width: 100%;
-
+    z-index: 999;
     display: none;
 
     &.visible {
@@ -1028,7 +1114,7 @@ input:checked + .slider {
             width: 13px;
             height: 13px;
             border-radius: 50%;
-            background: #fff;
+            background: #fd8967;
             animation-timing-function: cubic-bezier(0, 1, 1, 0);
 
             &:nth-child(1) {
@@ -1086,10 +1172,10 @@ input:checked + .slider {
 
 .alert {
     position: fixed;
-    left: 50%;
+    left: 0;
     top: 0;
     height: 60px;
-    width: 400px;
+    width: 100%;
     border-radius: 1rem;
     padding: 0 0.375rem 0 1.25rem;
     align-items: center;
@@ -1098,13 +1184,12 @@ input:checked + .slider {
     display: flex;
     opacity: 0;
     pointer-events: none;
-    transform: translate(-50%, 100%);
     transition: 0.2s ease;
-
+    justify-content: center;
+    align-items: center;
     &.visible {
         opacity: 1;
         pointer-events: all;
-        transform: translate(-50%, 50%);
     }
 
 }

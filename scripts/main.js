@@ -8,6 +8,9 @@ $.fn.InitTable = function (object) {
     $(this).DataTable({
         lengthChange: false,
         dom: 'Rlfrtip',
+        "language": {
+            "emptyTable":`<img src="/assets/images/noresult.png" alt=""> <span>No matching search results</span>  Try again using more general search terms`
+        },
         order: [],
         responsive: true,
         "paging": true,
@@ -107,7 +110,12 @@ function setGrid(data) {
                             <div class="slider round"></div>
                         </label>
                         
-                        <div class="delete" data-id="${item['_id']}">X</div>
+                        <div class="delete" data-id="${item['_id']}">
+                            <img src="/assets/images/menu-vertical.png" alt="">
+                            <div class="sm-popup">
+                                <p>Delete</p>
+                            </div>
+                        </div>
                     `
                 }
             },
@@ -349,23 +357,40 @@ void
             })
         })
 
-
         // delete user email
+        let id;
         $(document).on('click', '.delete', function () {
-            let id = $(this).data('id')
+            id = $(this).data('id')
 
-            $('.delete-popup').addClass('visible')
+            $(this).find('.sm-popup').toggleClass('active')
 
-            // delete_user_email({id}, resp => {
-            //     getTableData()
-            // })
         })
 
-        // $(document).on('click', 'div.no', function () {
-        //     let id = $(this).data('id')
-        //     $('.delete-popup').removeClass('visible')
+        $(document).on('click', '.sm-popup', function () {
 
+            $('.sm-popup').removeClass('active')
+            $('.flow').addClass('visible')
 
-        // })
+        })
+
+        $('.delete-popup .modal-title .close').on('click', function () {
+            $('.sm-popup').removeClass('active')
+            $('.flow').removeClass('visible')
+        })
+
+        $('.delete-popup div.no').on('click', function () {
+            $('.sm-popup').removeClass('active')
+            $('.flow').removeClass('visible')
+        })
+
+        $('.delete-popup div.yes').on('click', function () {
+            
+            $('.sm-popup').removeClass('active')
+            $('.flow').removeClass('visible')
+
+            delete_user_email({id}, resp => {
+                getTableData()
+            })
+        })
 
     }()
