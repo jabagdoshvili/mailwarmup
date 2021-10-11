@@ -354,11 +354,11 @@ void
         $(document).on('click', '.delete', function () {
             let id = $(this).data('id')
 
-            // $('.delete-popup').addClass('visible')
+            $('.delete-popup').addClass('visible')
 
-            delete_user_email({id}, resp => {
-                getTableData()
-            })
+            // delete_user_email({id}, resp => {
+            //     getTableData()
+            // })
         })
 
         // $(document).on('click', 'div.no', function () {
