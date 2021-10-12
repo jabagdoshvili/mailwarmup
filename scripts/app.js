@@ -58,7 +58,7 @@ function add_email(data, callback) {
 
 $(document).ajaxError(function (err, jqXHR, settings, thrownError) {
     if ([401, 403].includes(jqXHR.status)) {
-
+        
     }
 
     if(jqXHR.status == 400) {

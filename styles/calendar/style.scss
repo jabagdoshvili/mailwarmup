@@ -207,7 +207,7 @@
   }
   .predefined-periods {
       height: 100%;
-      padding: 3.9375rem 1.3125rem;
+      padding: 1.5625rem 1.3125rem;
       padding-bottom: 0 !important;
       box-sizing: border-box;
       border-left: 0.0625rem solid rgba(#000, 0.05);
@@ -218,10 +218,10 @@
           @include semiBold();
           font-size: 0.875rem;
           color: #333870;
-          height: 3.125rem;
+        //   height: 3.125rem;
           display: flex;
           align-items: center;
-          margin-bottom: 0;
+          margin-bottom: 1.75rem;
       }
 
       ul {
@@ -249,5 +249,10 @@
               }
           }
       }
+      .reset {
+        color: #fd8967;
+        font-size: 14px;
+        margin-top: 1.25rem;
+    }
   }
 }

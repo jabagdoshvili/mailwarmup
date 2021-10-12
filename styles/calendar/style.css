@@ -208,7 +208,7 @@
 
 .calendar-wrapper .predefined-periods {
   height: 100%;
-  padding: 3.9375rem 1.3125rem;
+  padding: 1.5625rem 1.3125rem;
   padding-bottom: 0 !important;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -221,14 +221,13 @@
   font-weight: 600;
   font-size: 0.875rem;
   color: #333870;
-  height: 3.125rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-bottom: 0;
+  margin-bottom: 1.75rem;
 }
 
 .calendar-wrapper .predefined-periods ul li {
@@ -258,5 +257,11 @@
 
 .calendar-wrapper .predefined-periods ul + .selected span {
   color: #fd8967;
+}
+
+.calendar-wrapper .predefined-periods .reset {
+  color: #fd8967;
+  font-size: 14px;
+  margin-top: 1.25rem;
 }
 /*# sourceMappingURL=style.css.map */

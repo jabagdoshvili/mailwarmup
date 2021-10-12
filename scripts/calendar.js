@@ -83,6 +83,7 @@ void
                     <p>Predefined periods:</p>
                     <ul></ul>
                     <div class="selected">Selected: <span class="count">0</span> <span>days</span></div>
+                    <div class="reset">Reset</div>
                 </div>
             `)
 
@@ -195,6 +196,21 @@ void
 
         void function InitCalendarDomEvents() {
 
+            $('.predefined-periods .reset').click(function () {
+                _startDate = ''
+                _endDate = ''
+                hasStartDate = false
+                hasEndDate = false
+
+                $('.count').text(0)
+                getDays(year, month, 0)
+                getDays(year, month + 1, 1)
+                setGrid(response)
+
+                $('.predefined-periods ul li').removeClass('active')
+            })
+
+
             $(customCalendar).on('click', '.arrow', function (ev) {
                 var isLeft = $(this).hasClass('arrow-left')
                 month = isLeft ? month -= 1 : month += 1
@@ -256,6 +272,8 @@ void
 
                 setInRange(0)
                 setInRange(1)
+                setGrid(filerDateRange())
+
             })
         }()
     }()

@@ -9,7 +9,7 @@ $.fn.InitTable = function (object) {
         lengthChange: false,
         dom: 'Rlfrtip',
         "language": {
-            "emptyTable":`<img src="/assets/images/noresult.png" alt=""> <span>No matching search results</span>  Try again using more general search terms`
+            "emptyTable":`<div class="no-data"><img src="/assets/images/noresult.png" alt=""> <span>No matching search results</span>  Try again using more general search terms</div>`
         },
         order: [],
         responsive: true,
@@ -66,11 +66,10 @@ function setGrid(data) {
                 title: 'Email Address',
                 data: 'email',
                 render: function (el, type, item) {
-                    let img = el.includes('gmail') ? 'gmail' : 'outlook'
                     return `
                         <div class="mail-wrapper">
                             <div class="icon">
-                                <img src="/assets/images/dark-${img}.svg">
+                                <img src="/assets/images/dark-${item.provaider}.svg">
                             </div>
                             <span>${el}</span>    
                         </div>
@@ -80,6 +79,9 @@ function setGrid(data) {
             {
                 title: 'Sender',
                 data: 'sender_first_name',
+                render: function(el, type, item) {
+                    return el + ' ' + item['sender_last_name']
+                }
             },
             {
                 title: 'Starting (Baseline)',
@@ -105,15 +107,17 @@ function setGrid(data) {
                 data: 'is_paused',
                 render: function (el, type, item) {
                     return `                        
-                        <label class="switch">
-                            <input type="checkbox" ${el == 'Y' ? 'checked' : ''} name="is_paused" data-id="${item['_id']}"/>
-                            <div class="slider round"></div>
-                        </label>
-                        
-                        <div class="delete" data-id="${item['_id']}">
-                            <img src="/assets/images/menu-vertical.png" alt="">
-                            <div class="sm-popup">
-                                <p>Delete</p>
+                        <div class="status-wrapper">
+                            <label class="switch">
+                                <input type="checkbox" ${el == 'Y' ? 'checked' : ''} name="is_paused" data-id="${item['_id']}"/>
+                                <div class="slider round"></div>
+                            </label>
+                            
+                            <div class="delete" data-id="${item['_id']}">
+                                <img src="/assets/images/menu-vertical.png" alt="">
+                                <div class="sm-popup">
+                                    <p>Delete</p>
+                                </div>
                             </div>
                         </div>
                     `
@@ -131,7 +135,7 @@ function setGrid(data) {
 function filerDateRange() {
     let filtered = response
     if (_endDate != '' && _startDate != '') {
-        filtered = response.filter(e => new Date(e.date) >= new Date(_startDate) && new Date(e.date) <= new Date(_endDate))
+        filtered = response.filter(e => new Date(e.added_date) >= new Date(_startDate) && new Date(e.added_date) <= new Date(_endDate))
     }
 
     return filtered

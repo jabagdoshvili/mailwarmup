@@ -35,7 +35,7 @@ table {
 }
 
 tbody {
-    max-height: 28.75rem;
+    height: 28.75rem;
 }
 
 input:focus,
@@ -886,8 +886,6 @@ header {
             td:last-child,
             th:last-child {
                 border-radius: 0 1rem 1rem 0;
-                display: flex;
-                align-items: center;
                 position: relative;
                 .delete {
                     position: absolute;
@@ -912,6 +910,8 @@ header {
                         p {
                             padding: 0;
                             margin: 0;
+                            color: $brandColor;
+                            font-weight: 500;
                         }
                     }
                 }
@@ -944,6 +944,11 @@ header {
             }
         }
     }
+}
+
+.status-wrapper {
+    display: flex;
+    align-items: center;
 }
 
 .switch {
@@ -1074,14 +1079,20 @@ input:checked + .slider {
 }
 
 .dataTables_empty {
-    flex-direction: column;
-    align-items: center;
     font-size: 13px;
     color: rgba(0, 0, 0, 0.40);
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    top: 35%;
+    border-radius: 1rem !important;
+    .no-data {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 50px;
+
+        & > * {
+            margin-bottom: 10px;
+        }
+    }
     span {
         font-size: 18px;
         color: black;
@@ -1194,6 +1205,35 @@ input:checked + .slider {
         pointer-events: all;
     }
 
+}
+
+footer {
+    padding: 1.25rem 3.75rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    -moz-appearance: initial;
+    &::after {
+        content: "";
+        width: calc(100% - 2 * 3.75rem);
+        margin: auto;
+        top: 0;
+        background-color: rgba(0, 0, 0, 0.05);
+        height: 1px;
+        position: absolute;
+    }
+    p {
+        font-size: 0.875rem;
+        font-weight: 400;
+        color: black;
+        margin-bottom: 0;
+        span {
+            font-weight: 400;
+            font-style: italic;
+            color: $components;
+        }
+    }
 }
 
 // Style Media

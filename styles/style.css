@@ -27,7 +27,7 @@ table {
 }
 
 tbody {
-  max-height: 28.75rem;
+  height: 28.75rem;
 }
 
 input:focus,
@@ -1173,12 +1173,6 @@ header .profile-area > ul > li img {
 .table-wrapper table.dataTable tbody tr td:last-child,
 .table-wrapper table.dataTable tbody tr th:last-child {
   border-radius: 0 1rem 1rem 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   position: relative;
 }
 
@@ -1220,6 +1214,8 @@ header .profile-area > ul > li img {
 .table-wrapper table.dataTable tbody tr th:last-child .delete .sm-popup p {
   padding: 0;
   margin: 0;
+  color: #333870;
+  font-weight: 500;
 }
 
 .table-wrapper table.dataTable tbody tr .rate {
@@ -1263,6 +1259,15 @@ header .profile-area > ul > li img {
           align-items: center;
   margin-right: 0.625rem;
   border-radius: 0.625rem;
+}
+
+.status-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .switch {
@@ -1415,20 +1420,30 @@ input:checked + .slider:before {
 }
 
 .dataTables_empty {
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.4);
+  border-radius: 1rem !important;
+}
+
+.dataTables_empty .no-data {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  font-size: 13px;
-  color: rgba(0, 0, 0, 0.4);
-  position: absolute;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  top: 35%;
+  margin-top: 50px;
+}
+
+.dataTables_empty .no-data > * {
+  margin-bottom: 10px;
 }
 
 .dataTables_empty span {
@@ -1599,6 +1614,44 @@ input:checked + .slider:before {
 .alert.visible {
   opacity: 1;
   pointer-events: all;
+}
+
+footer {
+  padding: 1.25rem 3.75rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  -moz-appearance: initial;
+}
+
+footer::after {
+  content: "";
+  width: calc(100% - 2 * 3.75rem);
+  margin: auto;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.05);
+  height: 1px;
+  position: absolute;
+}
+
+footer p {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: black;
+  margin-bottom: 0;
+}
+
+footer p span {
+  font-weight: 400;
+  font-style: italic;
+  color: #fd8967;
 }
 
 @media only screen and (max-width: 1024px) {
