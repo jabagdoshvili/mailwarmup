@@ -492,39 +492,41 @@ header {
                             display: block;
                         }
                         & > li {
-                            height: 3.5rem;
-                            background-color: white;
-                            border-radius: 0.875rem;
-                            padding: 0 1.25rem;
-                            display: flex;
-                            align-items: center;
-                            transition: all 0.5s ease;
-                            font-size: 0.875rem;
-                            cursor: pointer;
-                            right: 0;
-                            top: 4.125rem;
-                            color: $brandColor;
-                            & > img {
-                                margin-right: 2rem;
-                                width: 1.25rem;
-                                height: 1.25rem;
-                                &:nth-child(2) {
-                                    display: none;
-                                }
-                            }
-                            &:hover {
-                                color: #fd8967;
-                                background-color: rgba(253, 137, 103, 0.05);
-                                .fa.fa-external-link {
-                                    visibility: visible;
-                                    opacity: 1;
-                                }
+                            & > a {
+                                height: 3.5rem;
+                                background-color: white;
+                                border-radius: 0.875rem;
+                                padding: 0 1.25rem;
+                                display: flex;
+                                align-items: center;
+                                transition: all 0.5s ease;
+                                font-size: 0.875rem;
+                                cursor: pointer;
+                                right: 0;
+                                top: 4.125rem;
+                                color: $brandColor;
                                 & > img {
-                                    &:first-child {
+                                    margin-right: 2rem;
+                                    width: 1.25rem;
+                                    height: 1.25rem;
+                                    &:nth-child(2) {
                                         display: none;
                                     }
-                                    &:nth-child(2) {
-                                        display: block;
+                                }
+                                &:hover {
+                                    color: #fd8967;
+                                    background-color: rgba(253, 137, 103, 0.05);
+                                    .fa.fa-external-link {
+                                        visibility: visible;
+                                        opacity: 1;
+                                    }
+                                    & > img {
+                                        &:first-child {
+                                            display: none;
+                                        }
+                                        &:nth-child(2) {
+                                            display: block;
+                                        }
                                     }
                                 }
                             }
