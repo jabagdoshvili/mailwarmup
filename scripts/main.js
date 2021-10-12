@@ -35,6 +35,8 @@ function getTableData() {
     }, resp => {
         response = resp.data.emails
         setGrid(response)
+        let q = resp.data.quota
+        $('#quota').text(q['user-used-quota']+'/'+q['user-total-quota'])
     })
 }
 
@@ -141,16 +143,22 @@ function filerDateRange() {
     return filtered
 }
 
-function getLogContainer() {
+function getLogContainer(log_id, date, description) {
+    let randomStr = (Math.random() + 1).toString(36).substring(7)
     let container = $(`
-        <div class="accordion-item">
+        <div class="accordion-item" log-id="${log_id}">
             <h2 class="accordion-header" id="headingOne">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    <span>06 Mar, 2021 - 21:00</span> <span>sent to johnysmith@gmail.com</span>
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#${log_id}${randomStr}" aria-expanded="false" aria-controls="${log_id}${randomStr}">
+                    <span>${date}</span> <span>${description}</span>
                 </button>
             </h2>
-            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne">
+        </div>
+    `)
+
+    get_individual_email_log({log_id}, resp=> {
+        let {body, from, subject, to} = resp.data
+        $('h2', container).after(`
+            <div id="${log_id}${randomStr}" class="accordion-collapse collapse" aria-labelledby="headingOne">
                 <div class="accordion-body">
                     <ul>
                         <li>
@@ -158,7 +166,7 @@ function getLogContainer() {
                                 <span>From:</span>
                             </div>
                             <div class="text">
-                                <span></span>
+                                <span>${from}</span>
                             </div>
                         </li>
                         <li>
@@ -166,7 +174,7 @@ function getLogContainer() {
                                 <span>To:</span>
                             </div>
                             <div class="text">
-                                <span></span>
+                                <span>${to}</span>
                             </div>
                         </li>
                         <li>
@@ -174,8 +182,8 @@ function getLogContainer() {
                                 <span>Subject:</span>
                             </div>
                             <div class="text">
-                                <span>Subject name</span>
-                                <p></p>
+                                <span>${subject}</span>
+                                <p>${body}</p>
                             </div>
                         </li>
                         <li>
@@ -189,14 +197,27 @@ function getLogContainer() {
                     </ul>
                 </div>
             </div>
-        </div>
-    `)
+        `)
+    })
+
 
     return container
 }
 
 void
     function InitDomEvents() {
+
+        $('.letters').keypress(function (e) {
+            var regex = new RegExp(/^[a-zA-Z\s]+$/);
+            var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+            if (regex.test(str)) {
+                return true;
+            }
+            else {
+                e.preventDefault();
+                return false;
+            }
+        });
 
         $('.status-tab').click(function () {
             $('.popup-wrapper').removeClass('visible')
@@ -236,9 +257,25 @@ void
             $('.email-popup').addClass('visible')
         })
 
+        let hasProvider = false
         $('.set-up').on('click', function () {
             $('.email-popup').removeClass('visible')
             $('.add-inbox').addClass('visible')
+            $('[tab="custom"]').show()
+            $('.add-inbox .modal-menu ul li:eq(0)').click()
+            $('li.action').hide()
+            hasProvider = false
+        })
+
+        let email_provider = 'smtp'
+        $('.contact-list').on('click', 'li', function() {
+            email_provider = $(this).data('id')
+            $('.email-popup').removeClass('visible')
+            $('.add-inbox').addClass('visible')
+            $('[tab="custom"]').hide()
+            $('.add-inbox .modal-menu ul li:eq(0)').click()
+            $('li.action').hide()
+            hasProvider = true
         })
 
         $('.calendar-tab').on('click', function () {
@@ -255,9 +292,15 @@ void
                 $('.mail-inside').removeClass('visible')
             } else {
                 $('.mail-inside').addClass('visible')
+                $('.accordion').empty()
+                get_email_log({ send_mail_id_pk: 'cqe' }, resp => {
+                    resp.data.log.forEach((el, i)=> {
+                        let {log_id, date, description} = el
+                        let logContainer = getLogContainer(log_id, date, description)
+                        $('.accordion').append(logContainer)
 
-                get_email_log({ send_mail_id_pk }, resp => {
-                    console.log(resp.data);
+                        if(i == resp.data.log.length - 1) $('.loader.visible').removeClass('visible')
+                    })
                 })
             }
         })
@@ -287,36 +330,69 @@ void
         })
 
 
-        $(document).on('click', '.send.save', function () {
-            let data = {
-                "email_provider": "smtp", //google, microsoft365, 
-                "server_address": "smtp.gmail.com",
-                "port_TLS": 587,
-                "port_SSL": 465,
-                "use_authentication": "Y",
-                "use_secure_connection": "Y",
-                "start_time": 8,
-                "end_time": 16,
-                "min_delay_between_two_emails": 1.5
-            }
+        $('.modals').on('click', 'button.back', function (e) {
+            e.preventDefault()
+            $('[tab="authentication"]').click()
+        })
 
-            // "requires_SSL": "Y",
-            // "requires_TLS": "Y",
+        $('.modals').on('click', 'button.close', function (e) {
+            e.preventDefault()
+            $(this).closest('.modals').find('close').click()
+        })
+
+
+        $('.modals').on('click', '.send.save', function (e) {
+            e.preventDefault()
+            let data = {}
+
+            $('.modal-wrapper .modal-form input').each((index, el)=> {
+                let input = $(el)
+                let key = input.attr('name')
+                let type = input.attr('type')
+                let val = ''
+                if(type == 'checkbox') val = input.prop('checked') ? 'Y' : 'N'
+                else val = input.val()
+
+                if(val == '') return;
+                data[key] = val
+            })
+
+            data.email_provider = email_provider
 
             data.time_zone = new Date().toString().match(/([A-Z]+[\+-][0-9]+)/)[1]
 
-            alert('working')
-            return
+            // let lastStep = ['starting_baseline','increase_per_day','max_sends_per_day','reply_rate_%']
+            // let values = [] 
+            // lastStep.forEach(el=> {
+            //     values.push(data[el])
+            // })
 
-            validate_email_credentials(data, () => {
-                getTableData()
+            validate_email_credentials(data, (resp) => {
+                let message = ''    
+                resp.messages.forEach(msg=> {
+                    message += msg+'<br/>'
+                })
+                if(resp.error == 'Y') {
+                    $('.modal-form.error p').html(message)
+                    $('[tab="error"]').css('display', 'flex').click()
+                } else {
+                    $('.modal-form.success p').html(message)
+                    $('[tab="success"]').css('display', 'flex').click()
+                }
             })
         })
 
         $('form').on('submit', function (ev) {
             ev.preventDefault()
+            if($(ev.target).is('.back') || $(ev.target).is('.close')) return;
             if (!$(this).hasClass('schedule')) {
-                $('.modal-menu li.active').next().trigger('click')
+                let li = null
+                if(hasProvider) {
+                    li = $('.modal-menu li[tab="schedule"]:visible')
+                } else {
+                    li =  $('.modal-menu li.active + li:not(.action):visible')
+                }
+                li.trigger('click')
             }
         })
 
@@ -391,6 +467,16 @@ void
         $('.delete-popup div.no').on('click', function () {
             $('.sm-popup').removeClass('active')
             $('.flow').removeClass('visible')
+        })
+
+        $('.accordion-modal .modal-menu ul li').on('click', function () {
+            let tab = $(this).attr('tab')
+
+            if(tab == 'analytics') {
+                $('.analytics-area').addClass('visible').siblings().removeClass('visible')
+            } else {
+                $('.accordion-area').addClass('visible').siblings().removeClass('visible')
+            }
         })
 
         $('.delete-popup div.yes').on('click', function () {

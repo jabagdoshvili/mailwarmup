@@ -1,6 +1,6 @@
 const isLocal = location.href.includes('localhost')
 
-const URI = 'https://dashapi.mailzoro.io/v1'
+const URI = $('body').attr('data-zoro_api_path')
 function ajax(method, url, params) {
     let token = $('body').attr('data-zoro_token')
 
@@ -39,7 +39,7 @@ function delete_user_email(data, callback) {
 }
 
 function validate_email_credentials(data, callback) {
-    ajax("POST", `/validate_email_credentials`, data).then(result => callback && callback(result))
+    ajax("POST", `/validate_email_credentials`, data).done(result => callback && callback(result)).fail(result => callback && callback(JSON.parse(result.responseText)))
 }
 
 function get_email_log(data, callback) {
@@ -58,7 +58,11 @@ function add_email(data, callback) {
 
 $(document).ajaxError(function (err, jqXHR, settings, thrownError) {
     if ([401, 403].includes(jqXHR.status)) {
-        
+        setNotification('Session expired!')
+        $('.alert').addClass('visible')
+        setTimeout(() => {
+            location.href = '/a/login'
+        }, 3000);
     }
 
     if(jqXHR.status == 400) {
@@ -78,3 +82,9 @@ $(document).ajaxSuccess(function (err, jqXHR, settings, thrownError) {
         }, 1500);
     }
 });
+
+
+function setNotification(message = 'success') {
+    $('.alert').html(message)
+}
+setNotification()

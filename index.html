@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="./styles/style.css">
 </head>
 
-<body>
+<body data-zoro_api_path="https://dashapi.mailzoro.io/v1">
 
     <!-- POPUPS -->
 
@@ -44,74 +44,30 @@
             </div>
             <div class="modal-menu">
                 <ul>
-                    <li>Tab one</li>
-                    <li>Tab two</li>
-                    <li>Tab three</li>
-                    <li class="active">Logs</li>
+                    <li tab="analytics">Analytics</li>
+                    <li tab="logs" class="active">Logs</li>
                 </ul>
             </div>
-            <div class="accordion-area">
+            <div class="accordion-area visible">
                 <div class="accordion-title">
                     <ul>
                         <li>Date</li>
                         <li>Discription</li>
                     </ul>
                 </div>
-                <div class="accordion" id="accordionExample">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                <span>06 Mar, 2021 - 21:00</span> <span>sent to johnysmith@gmail.com</span>
-                            </button>
-                        </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                            data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <ul>
-                                    <li>
-                                        <div class="title">
-                                            <span>From:</span>
-                                        </div>
-                                        <div class="text">
-                                            <span>Govindram G. via Upwork</span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="title">
-                                            <span>To:</span>
-                                        </div>
-                                        <div class="text">
-                                            <span>johnysmith@gmail.com</span>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="title">
-                                            <span>Subject:</span>
-                                        </div>
-                                        <div class="text">
-                                            <span>Subject name</span>
-                                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting
-                                                industry. Lorem Ipsum has been the industry’s standard dummy text ever
-                                                since the 1500s
-                                                when an unknown printer took a galley of type and scrambled it to make a
-                                                type specimen book.</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="title">
-                                            <span>Attachment</span>
-                                        </div>
-                                        <div class="text">
-                                            <p><span>Attachment.png </span>(302K)</p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                <div class="loader">
+                    <div class="lds-ellipsis">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
                     </div>
-
                 </div>
+                <div class="accordion" id="accordionExample">
+                </div>
+            </div>
+            <div class="analytics-area">
+                <p>Comming Soon</p>
             </div>
         </div>
     </div>
@@ -126,31 +82,31 @@
             </div>
             <div class="contact-list">
                 <ul>
-                    <li>
+                    <li data-id="Google">
                         <div class="list-icon">
                             <img src="./assets/images/google.svg" alt="">
                         </div>
                         Google
                     </li>
-                    <li>
+                    <li data-id="Outlook">
                         <div class="list-icon">
                             <img src="./assets/images/outlook.svg" alt="">
                         </div>
                         Outlook
                     </li>
-                    <li>
+                    <li data-id="Office365">
                         <div class="list-icon">
                             <img src="./assets/images/office.svg" alt="">
                         </div>
                         Office 365
                     </li>
-                    <li>
+                    <li data-id="Icloud">
                         <div class="list-icon">
                             <img src="./assets/images/icloud.svg" alt="">
                         </div>
                         iCloud
                     </li>
-                    <li>
+                    <li data-id="Yahoo">
                         <div class="list-icon">
                             <img src="./assets/images/yahoo.svg" alt="">
                         </div>
@@ -177,8 +133,8 @@
                     <li class="active" tab="authentication">Authentication</li>
                     <li tab="custom">Custom Settings</li>
                     <li tab="schedule">Sending Schedule</li>
-                    <li tab="success"><img src="/assets/images/success.png" alt="">Success</li>
-                    <li tab="error"><img src="/assets/images/error.png" alt="">Error</li>
+                    <li tab="success" class="action"><img src="/assets/images/success.png" alt="">Success</li>
+                    <li tab="error" class="action"><img src="/assets/images/error.png" alt="">Error</li>
                 </ul>
             </div>
 
@@ -189,21 +145,21 @@
                             <div class="row">
                                 <div class="col">
                                     <label for="">Email address</label>
-                                    <input type="mail" class="form-control" name="email">
+                                    <input type="email" class="form-control" name="email" required>
                                 </div>
                                 <div class="col">
                                     <label for="">Email Password</label>
-                                    <input type="password" class="form-control" name="email_pass">
+                                    <input type="password" class="form-control" name="email_pass" required>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col">
                                     <label for="">Sender First Name</label>
-                                    <input type="text" class="form-control" name="email_first_name">
+                                    <input type="text" class="form-control letters" name="email_first_name" required>
                                 </div>
                                 <div class="col">
                                     <label for="">Sender Last Name</label>
-                                    <input type="text" class="form-control" name="email_last_name">
+                                    <input type="text" class="form-control letters" name="email_last_name" required>
                                 </div>
                             </div>
                             <button class="send">Proceed to Save</button>
@@ -215,15 +171,15 @@
                             <div class="row">
                                 <div class="col">
                                     <label for="">Server Address</label>
-                                    <input type="text" class="form-control" name="server_address">
+                                    <input type="text" class="form-control" name="server_address" required>
                                 </div>
                                 <div class="col">
                                     <label for="">TLS Port</label>
-                                    <input type="mail" class="form-control" name="port_TLS">
+                                    <input type="number" class="form-control" name="port_TLS" required>
                                 </div>
                             </div>
                             <div class="round open-check">
-                                <input type="checkbox" id="checkbox" />
+                                <input type="checkbox" id="checkbox" name="requires_SSL"/>
                                 <label for="checkbox"></label>
                                 <span>Use SMTP SSL/TLS </span>
                             </div>
@@ -231,16 +187,16 @@
                                 <div class="form-row">
                                     <div class="col-12">
                                         <label for="">SSL Port</label>
-                                        <input type="text" class="form-control">
+                                        <input type="number" class="form-control" name="port_SSL">
                                     </div>
                                 </div>
                                 <div class="round">
-                                    <input type="checkbox" id="use_authentication"/>
+                                    <input type="checkbox" id="use_authentication" name="use_authentication"/>
                                     <label for="use_authentication"></label>
                                     <span>Use Authentication</span>
                                 </div>
                                 <div class="round">
-                                    <input type="checkbox" id="use_secure_connection"/>
+                                    <input type="checkbox" id="use_secure_connection" name="use_secure_connection"/>
                                     <label for="use_secure_connection"></label>
                                     <span>Use Secure Connection</span>
                                 </div>
@@ -250,25 +206,25 @@
                     </div>
 
                     <div class="modal-form schedule">
-                        <form>
+                        <form class="last-step">
                             <div class="row">
                                 <div class="col">
-                                    <label for="">Starting Baseline <img src="./assets/images/round.svg" alt=""></label>
-                                    <input type="text" class="form-control" name="starting_baseline">
+                                    <label data-title="Starting Baseline" for="">Starting Baseline <img src="./assets/images/round.svg" alt=""></label>
+                                    <input type="text" class="form-control" name="starting_baseline" required>
                                 </div>
                                 <div class="col">
-                                    <label for="">Increase (Per Day) <img src="./assets/images/round.svg" alt=""></label>
-                                    <input type="mail" class="form-control" name="increase_per_day">
+                                    <label data-title="Increase (Per Day)" for="">Increase (Per Day) <img src="./assets/images/round.svg" alt=""></label>
+                                    <input type="mail" class="form-control" name="increase_per_day" required>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <label for="">Max Send (Per Day) <img src="./assets/images/round.svg" alt=""></label>
-                                    <input type="text" class="form-control" name="max_sends_per_day">
+                                    <label data-title="Max Send (Per Day)" for="">Max Send (Per Day) <img src="./assets/images/round.svg" alt=""></label>
+                                    <input type="number" class="form-control" name="max_sends_per_day" required>
                                 </div>
                                 <div class="col">
-                                    <label for="">Reply rate % <img src="./assets/images/round.svg" alt=""></label>
-                                    <input type="text" class="form-control" name="reply_rate_%">
+                                    <label data-title="Reply rate %" for="">Reply rate % <img src="./assets/images/round.svg" alt=""></label>
+                                    <input type="number" class="form-control" name="reply_rate_%" required>
                                 </div>
                             </div>
                             <button class="send">Proceed to Save</button>
@@ -277,16 +233,14 @@
 
                     <div class="modal-form success">
                         <form>
-                            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec in enim vel neque condimentum lacinia sit amet et magna.
-                            </p>
+                            <p></p>
                             <button class="close">Close</button>
                         </form>
                     </div>
 
                     <div class="modal-form error">
                         <form>
-                            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec in enim vel neque condimentum lacinia sit amet et magna.
-                            </p>
+                            <p></p>
                             <button class="back">Back</button>
                         </form>
                     </div>
@@ -309,7 +263,7 @@
         <div class="profile-area">
             <ul>
                 <li>
-                    0/0
+                    <span id="quota">0/0</span>
                     <img src="./assets/images/mail.svg" alt="">
                 </li>
                 <li class="dropdown">
@@ -390,7 +344,7 @@
         <table id="rounded-table"></table>
     </div>
 
-    <div class="alert">Success</div>
+    <div class="alert"></div>
 
     <!-- Table Wrapper END-->
 
