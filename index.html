@@ -177,6 +177,8 @@
                     <li class="active" tab="authentication">Authentication</li>
                     <li tab="custom">Custom Settings</li>
                     <li tab="schedule">Sending Schedule</li>
+                    <li tab="success"><img src="/assets/images/success.png" alt="">Success</li>
+                    <li tab="error"><img src="/assets/images/error.png" alt="">Error</li>
                 </ul>
             </div>
 
@@ -212,49 +214,35 @@
                         <form>
                             <div class="row">
                                 <div class="col">
-                                    <label for="">SMTP Username</label>
-                                    <input type="text" class="form-control">
+                                    <label for="">Server Address</label>
+                                    <input type="text" class="form-control" name="server_address">
                                 </div>
                                 <div class="col">
-                                    <label for="">SMTP Password</label>
-                                    <input type="mail" class="form-control">
+                                    <label for="">TLS Port</label>
+                                    <input type="mail" class="form-control" name="port_TLS">
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col">
-                                    <label for="">SMTP Host</label>
-                                    <input type="text" class="form-control">
-                                </div>
-                                <div class="col">
-                                    <label for="">SMTP Port</label>
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>
-                            <div class="round">
+                            <div class="round open-check">
                                 <input type="checkbox" id="checkbox" />
                                 <label for="checkbox"></label>
                                 <span>Use SMTP SSL/TLS </span>
                             </div>
                             <div class="hidden">
-                                <div class="row">
-                                    <div class="col">
-                                        <label for="">IMAP Username</label>
+                                <div class="form-row">
+                                    <div class="col-12">
+                                        <label for="">SSL Port</label>
                                         <input type="text" class="form-control">
-                                    </div>
-                                    <div class="col">
-                                        <label for="">IMAP Password</label>
-                                        <input type="mail" class="form-control">
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <label for="">IMAP Host</label>
-                                        <input type="text" class="form-control">
-                                    </div>
-                                    <div class="col">
-                                        <label for="">IMAP Port</label>
-                                        <input type="text" class="form-control">
-                                    </div>
+                                <div class="round">
+                                    <input type="checkbox" id="use_authentication"/>
+                                    <label for="use_authentication"></label>
+                                    <span>Use Authentication</span>
+                                </div>
+                                <div class="round">
+                                    <input type="checkbox" id="use_secure_connection"/>
+                                    <label for="use_secure_connection"></label>
+                                    <span>Use Secure Connection</span>
                                 </div>
                             </div>
                             <button class="send">Proceed to Save</button>
@@ -284,6 +272,22 @@
                                 </div>
                             </div>
                             <button class="send">Proceed to Save</button>
+                        </form>
+                    </div>
+
+                    <div class="modal-form success">
+                        <form>
+                            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec in enim vel neque condimentum lacinia sit amet et magna.
+                            </p>
+                            <button class="close">Close</button>
+                        </form>
+                    </div>
+
+                    <div class="modal-form error">
+                        <form>
+                            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec in enim vel neque condimentum lacinia sit amet et magna.
+                            </p>
+                            <button class="back">Back</button>
                         </form>
                     </div>
                 </div>

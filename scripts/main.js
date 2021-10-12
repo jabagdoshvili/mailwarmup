@@ -69,7 +69,7 @@ function setGrid(data) {
                     return `
                         <div class="mail-wrapper">
                             <div class="icon">
-                                <img src="/assets/images/dark-${item.provaider}.svg">
+                                <img src="/assets/images/dark-${item.email_provider}.svg">
                             </div>
                             <span>${el}</span>    
                         </div>
@@ -263,7 +263,7 @@ void
         })
 
 
-        $('.round input[type="checkbox"]').on('click', function () {
+        $('.open-check input[type="checkbox"]').on('click', function () {
             if ($(this).is(':checked')) {
                 $('.hidden').addClass('visible')
             } else {
