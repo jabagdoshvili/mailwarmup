@@ -203,8 +203,8 @@ void
                 hasEndDate = false
 
                 $('.count').text(0)
-                getDays(year, month, 0)
-                getDays(year, month + 1, 1)
+                getDays(dateObj.getFullYear(), dateObj.getMonth(), 0)
+                getDays(dateObj.getFullYear(), dateObj.getMonth() + 1, 1)
                 setGrid(response)
 
                 $('.predefined-periods ul li').removeClass('active')

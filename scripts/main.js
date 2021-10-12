@@ -199,6 +199,8 @@ void
     function InitDomEvents() {
 
         $('.status-tab').click(function () {
+            $('.popup-wrapper').removeClass('visible')
+            $('.popup-wrapper').removeClass('active')
             $('.filter-dropdown').toggleClass('active')
             $('.filter-dropdown-header').removeClass('active')
         })
@@ -221,6 +223,8 @@ void
         })
 
         $('.dropdown').click(function () {
+            $('.popup-wrapper').removeClass('visible')
+            $('.popup-wrapper').removeClass('active')
             $('.filter-dropdown-header').toggleClass('active')
         })
 
@@ -238,6 +242,8 @@ void
         })
 
         $('.calendar-tab').on('click', function () {
+            $('.popup-wrapper').removeClass('visible')
+            $('.popup-wrapper').removeClass('active')
             $('.calendar-wrapper ').toggleClass('visible')
             $('.filter-dropdown').removeClass('visible')
         })
