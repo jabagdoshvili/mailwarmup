@@ -47,6 +47,26 @@ select:focus {
 }
 
 input {
+    &::-webkit-input-placeholder {
+        font-size: 0.875rem;
+        font-weight: 400;
+        color: rgba(0, 0, 0, 0.4);
+    }
+    &::-moz-placeholder {
+        font-size: 0.875rem;
+        font-weight: 400;
+        color: rgba(0, 0, 0, 0.4);
+    }
+    &:-ms-input-placeholder {
+        font-size: 0.875rem;
+        font-weight: 400;
+        color: rgba(0, 0, 0, 0.4);
+    }
+    &::-ms-input-placeholder {
+        font-size: 0.875rem;
+        font-weight: 400;
+        color: rgba(0, 0, 0, 0.4);
+    }
     &::placeholder {
         font-size: 0.875rem;
         font-weight: 400;
@@ -309,9 +329,16 @@ input {
             }
         }
         .modal-form {
-            animation: modalAnimation 0.4s ease;
+            -webkit-animation: modalAnimation 0.4s ease;
+                    animation: modalAnimation 0.4s ease;
             transition: 0.9s cubic-bezier(0.25, 1, 0.3, 1);
             display: none;
+            @-webkit-keyframes modalAnimation {
+                from {
+                    transform: translateY(2rem);
+                    opacity: 0;
+                }
+            }
             @keyframes modalAnimation {
                 from {
                     transform: translateY(2rem);
@@ -502,8 +529,19 @@ header {
                             align-items: center;
                             border-radius: 0.625rem;
                             transform: translate(0.3125rem, 0.0625rem);
-                            animation: animation 0.3s infinite alternate;
+                            -webkit-animation: animation 0.3s infinite alternate;
+                                    animation: animation 0.3s infinite alternate;
                             pointer-events: none;
+                        }
+
+                        @-webkit-keyframes animation {
+                            from {
+                                opacity: 0.5;
+                            }
+
+                            to {
+                                opacity: 1;
+                            }
                         }
 
                         @keyframes animation {
@@ -772,6 +810,18 @@ header {
             outline: none;
             border: 0;
             box-sizing: border-box;
+            &::-webkit-input-placeholder {
+                color: rgba(0, 0, 0, 0.4);
+            }
+            &::-moz-placeholder {
+                color: rgba(0, 0, 0, 0.4);
+            }
+            &:-ms-input-placeholder {
+                color: rgba(0, 0, 0, 0.4);
+            }
+            &::-ms-input-placeholder {
+                color: rgba(0, 0, 0, 0.4);
+            }
             &::placeholder {
                 color: rgba(0, 0, 0, 0.4);
             }
@@ -791,7 +841,8 @@ header {
             img {
                 width: 1.125rem;
                 height: 1.25rem;
-                object-fit: contain;
+                -o-object-fit: contain;
+                   object-fit: contain;
             }
         }
     }
@@ -879,7 +930,8 @@ header {
             img {
                 width: 1.125rem;
                 height: 1.25rem;
-                object-fit: contain;
+                -o-object-fit: contain;
+                   object-fit: contain;
             }
         }
     }
@@ -1017,7 +1069,8 @@ header {
                     img {
                         width: 1.25rem;
                         height: 1.25rem;
-                        object-fit: contain;
+                        -o-object-fit: contain;
+                           object-fit: contain;
                     }
                 }
             }
@@ -1207,27 +1260,42 @@ input:checked + .slider {
             height: 13px;
             border-radius: 50%;
             background: #fd8967;
-            animation-timing-function: cubic-bezier(0, 1, 1, 0);
+            -webkit-animation-timing-function: cubic-bezier(0, 1, 1, 0);
+                    animation-timing-function: cubic-bezier(0, 1, 1, 0);
 
             &:nth-child(1) {
                 left: 8px;
-                animation: lds-ellipsis1 0.6s infinite;
+                -webkit-animation: lds-ellipsis1 0.6s infinite;
+                        animation: lds-ellipsis1 0.6s infinite;
             }
 
             &:nth-child(2) {
                 left: 8px;
-                animation: lds-ellipsis2 0.6s infinite;
+                -webkit-animation: lds-ellipsis2 0.6s infinite;
+                        animation: lds-ellipsis2 0.6s infinite;
             }
 
             &:nth-child(3) {
                 left: 32px;
-                animation: lds-ellipsis2 0.6s infinite;
+                -webkit-animation: lds-ellipsis2 0.6s infinite;
+                        animation: lds-ellipsis2 0.6s infinite;
             }
 
             &:nth-child(4) {
                 left: 56px;
-                animation: lds-ellipsis3 0.6s infinite;
+                -webkit-animation: lds-ellipsis3 0.6s infinite;
+                        animation: lds-ellipsis3 0.6s infinite;
             }
+        }
+    }
+
+    @-webkit-keyframes lds-ellipsis1 {
+        0% {
+            transform: scale(0);
+        }
+
+        100% {
+            transform: scale(1);
         }
     }
 
@@ -1241,6 +1309,16 @@ input:checked + .slider {
         }
     }
 
+    @-webkit-keyframes lds-ellipsis3 {
+        0% {
+            transform: scale(1);
+        }
+
+        100% {
+            transform: scale(0);
+        }
+    }
+
     @keyframes lds-ellipsis3 {
         0% {
             transform: scale(1);
@@ -1248,6 +1326,16 @@ input:checked + .slider {
 
         100% {
             transform: scale(0);
+        }
+    }
+
+    @-webkit-keyframes lds-ellipsis2 {
+        0% {
+            transform: translate(0, 0);
+        }
+
+        100% {
+            transform: translate(24px, 0);
         }
     }
 

@@ -412,7 +412,7 @@ input::placeholder {
 
 .overflow .modals .modal-form {
   -webkit-animation: modalAnimation 0.4s ease;
-          animation: modalAnimation 0.4s ease;
+  animation: modalAnimation 0.4s ease;
   -webkit-transition: 0.9s cubic-bezier(0.25, 1, 0.3, 1);
   transition: 0.9s cubic-bezier(0.25, 1, 0.3, 1);
   display: none;
@@ -667,7 +667,7 @@ header .profile-area > ul > li:last-child.trial .trial-plan {
   -webkit-transform: translate(0.3125rem, 0.0625rem);
           transform: translate(0.3125rem, 0.0625rem);
   -webkit-animation: animation 0.3s infinite alternate;
-          animation: animation 0.3s infinite alternate;
+  animation: animation 0.3s infinite alternate;
   pointer-events: none;
 }
 
@@ -1051,7 +1051,7 @@ header .profile-area > ul > li img {
   width: 1.125rem;
   height: 1.25rem;
   -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
 }
 
 .table-filters .status-tab {
@@ -1178,7 +1178,7 @@ header .profile-area > ul > li img {
   width: 1.125rem;
   height: 1.25rem;
   -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
 }
 
 .table-filters button {
@@ -1359,7 +1359,7 @@ header .profile-area > ul > li img {
   width: 1.25rem;
   height: 1.25rem;
   -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
 }
 
 .status-wrapper {
@@ -1592,31 +1592,31 @@ input:checked + .slider:before {
   border-radius: 50%;
   background: #fd8967;
   -webkit-animation-timing-function: cubic-bezier(0, 1, 1, 0);
-          animation-timing-function: cubic-bezier(0, 1, 1, 0);
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
 }
 
 .loader .lds-ellipsis div:nth-child(1) {
   left: 8px;
   -webkit-animation: lds-ellipsis1 0.6s infinite;
-          animation: lds-ellipsis1 0.6s infinite;
+  animation: lds-ellipsis1 0.6s infinite;
 }
 
 .loader .lds-ellipsis div:nth-child(2) {
   left: 8px;
   -webkit-animation: lds-ellipsis2 0.6s infinite;
-          animation: lds-ellipsis2 0.6s infinite;
+  animation: lds-ellipsis2 0.6s infinite;
 }
 
 .loader .lds-ellipsis div:nth-child(3) {
   left: 32px;
   -webkit-animation: lds-ellipsis2 0.6s infinite;
-          animation: lds-ellipsis2 0.6s infinite;
+  animation: lds-ellipsis2 0.6s infinite;
 }
 
 .loader .lds-ellipsis div:nth-child(4) {
   left: 56px;
   -webkit-animation: lds-ellipsis3 0.6s infinite;
-          animation: lds-ellipsis3 0.6s infinite;
+  animation: lds-ellipsis3 0.6s infinite;
 }
 
 @-webkit-keyframes lds-ellipsis1 {

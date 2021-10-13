@@ -9,7 +9,8 @@ $.fn.InitTable = function (object) {
         lengthChange: false,
         dom: 'Rlfrtip',
         "language": {
-            "emptyTable":`<div class="no-data"><img src="/assets/images/noresult.png" alt=""> <span>No matching search results</span>  Try again using more general search terms</div>`
+            "emptyTable":`<div class="no-data"><img src="/assets/images/noresult.png" alt=""> <span>No matching search results</span>  Try again using more general search terms</div>`,
+            "zeroRecords": `<div class="no-data"><img src="/assets/images/noresult.png" alt=""> <span>No matching search results</span>  Try again using more general search terms</div>`,
         },
         order: [],
         responsive: true,
@@ -111,7 +112,7 @@ function setGrid(data) {
                     return `                        
                         <div class="status-wrapper">
                             <label class="switch">
-                                <input type="checkbox" ${el == 'Y' ? 'checked' : ''} name="is_paused" data-id="${item['_id']}"/>
+                                <input type="checkbox" ${el == 'N' ? 'checked' : ''} name="is_paused" data-id="${item['_id']}"/>
                                 <div class="slider round"></div>
                             </label>
                             
@@ -236,7 +237,7 @@ void
 
             if (chosenStatusIndex == 0) setGrid(filerDateRange())
             else {
-                chosenStatusIndex = chosenStatusIndex == 1 ? 'Y' : 'N'
+                chosenStatusIndex = chosenStatusIndex != 1 ? 'Y' : 'N'
                 setGrid(filerDateRange().filter(e => e.is_paused == chosenStatusIndex))
             }
 
@@ -436,7 +437,7 @@ void
 
 
         $(document).on('change', 'input[name="is_paused"]', function () {
-            let type = $(this).prop('checked') ? 'pause' : 'resume'
+            let type = !$(this).prop('checked') ? 'pause' : 'resume'
             let id = $(this).data('id')
             pause_or_resume({ id, type }, () => {
                 getTableData()
