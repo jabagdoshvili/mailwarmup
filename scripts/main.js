@@ -147,7 +147,7 @@ function filerDateRange() {
 function getLogContainer(log_id, date, description) {
     let randomStr = (Math.random() + 1).toString(36).substring(7)
     let container = $(`
-        <div class="accordion-item" log-id="${log_id}">
+        <div class="accordion-item" data-random="${randomStr}" log-id="${log_id}">
             <h2 class="accordion-header" id="headingOne">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#${log_id}${randomStr}" aria-expanded="false" aria-controls="${log_id}${randomStr}">
                     <span>${date}</span> <span>${description}</span>
@@ -156,10 +156,18 @@ function getLogContainer(log_id, date, description) {
         </div>
     `)
 
-    get_individual_email_log({log_id}, resp=> {
-        let {body, from, subject, to} = resp.data
-        $('h2', container).after(`
-            <div id="${log_id}${randomStr}" class="accordion-collapse collapse" aria-labelledby="headingOne">
+    return container
+}
+
+
+function getIndividualLogsContaner(id, randomString) {
+    get_individual_email_log({log_id: id}, resp=> {
+        let {body, from, subject, to, atachments} = resp.data
+
+        let acordionItem = $(`.accordion-item[log-id="${id}"][data-random="${randomString}"]`)
+        
+         $(`h2.accordion-header`, acordionItem).after(`
+            <div id="${id}${randomString}" class="accordion-collapse collapse" aria-labelledby="headingOne">
                 <div class="accordion-body">
                     <ul>
                         <li>
@@ -188,25 +196,30 @@ function getLogContainer(log_id, date, description) {
                             </div>
                         </li>
                         <li>
-                            <div class="title">
+                        ${atachments ?
+                        `<div class="title">
                                 <span>Attachment</span>
                             </div>
                             <div class="text">
-                                <p><span>Attachment.png </span>(302K)</p>
-                            </div>
+                                <p><span>${atachments} </span>(Size)</p>
+                            </div>` : ''}
                         </li>
                     </ul>
                 </div>
             </div>
         `)
+        $('button', acordionItem).click()
     })
-
-
-    return container
 }
 
 void
     function InitDomEvents() {
+        
+        $('.modals').on('click', '.accordion-item:not(.clicked) h2.accordion-header', function() {
+            let id = $(this).closest('.accordion-item').addClass('clicked').attr('log-id')
+            let randomStr = $(this).closest('.accordion-item').data('random')
+            getIndividualLogsContaner(id, randomStr)
+        })
 
         $('.letters').keypress(function (e) {
             var regex = new RegExp(/^[a-zA-Z\s]+$/);

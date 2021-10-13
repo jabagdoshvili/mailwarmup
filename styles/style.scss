@@ -34,9 +34,9 @@ table {
     border-collapse: inherit;
 }
 
-tbody {
-    height: 28.75rem;
-}
+// tbody {
+//     height: 28.75rem;
+// }
 
 input:focus,
 textarea:focus,
@@ -241,6 +241,10 @@ input {
             align-items: center;
             justify-content: center;
             cursor: pointer;
+            transition: all ease .3s;
+            &:hover {
+                opacity: 0.5;
+            }
             span {
                 font-size: 0.875rem;
                 color: #333870;
@@ -259,6 +263,10 @@ input {
                     flex-direction: column;
                     cursor: pointer;
                     font-weight: 600;
+                    transition: all ease .3s;
+                    &:hover {
+                        opacity: 0.5;
+                    }
                     .list-icon {
                         background-color: rgba(51, 56, 112, 0.03);
                         border-radius: 1rem;
@@ -422,7 +430,7 @@ input {
                     margin-bottom: 1.875rem;
                     margin-right: 0;
                     margin-left: 0;
-                    .col, .col-12 {
+                    .col, .col-6 {
                         display: flex;
                         flex-direction: column;
 
@@ -443,6 +451,9 @@ input {
                                 padding-left: 0.5313rem;
                             }
                         }
+                    }
+                    .col-6  {
+                        padding-right: 1.25rem;
                     }
                 }
                 button {
@@ -948,16 +959,21 @@ header {
         flex-shrink: 0;
         cursor: pointer;
         font-weight: 600;
+        transition: all ease .3s;
+        &:hover {
+            opacity: 0.9;
+        }
     }
 }
 
 .table-wrapper {
     padding: 2.1563rem 3.75rem 5.2813rem 3.75rem;
+    min-height: 30.75rem;
     table.dataTable {
         width: 100% !important;
         border-spacing: 0 1.25rem;
         text-align: left;
-
+        // height: 30.75rem;
         td {
             font-weight: 400;
         }

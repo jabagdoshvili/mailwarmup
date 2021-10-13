@@ -26,10 +26,6 @@ table {
   border-collapse: inherit;
 }
 
-tbody {
-  height: 28.75rem;
-}
-
 input:focus,
 textarea:focus,
 select:focus {
@@ -281,6 +277,12 @@ input::placeholder {
       -ms-flex-pack: center;
           justify-content: center;
   cursor: pointer;
+  -webkit-transition: all ease .3s;
+  transition: all ease .3s;
+}
+
+.overflow .modals .set-up:hover {
+  opacity: 0.5;
 }
 
 .overflow .modals .set-up span {
@@ -314,9 +316,15 @@ input::placeholder {
           flex-direction: column;
   cursor: pointer;
   font-weight: 600;
+  -webkit-transition: all ease .3s;
+  transition: all ease .3s;
   text-align: center;
   font-size: 0.875rem;
   color: black;
+}
+
+.overflow .modals .contact-list ul li:hover {
+  opacity: 0.5;
 }
 
 .overflow .modals .contact-list ul li .list-icon {
@@ -523,7 +531,7 @@ input::placeholder {
   margin-left: 0;
 }
 
-.overflow .modals .modal-form form .row .col, .overflow .modals .modal-form form .row .col-12, .overflow .modals .modal-form form .form-row .col, .overflow .modals .modal-form form .form-row .col-12 {
+.overflow .modals .modal-form form .row .col, .overflow .modals .modal-form form .row .col-6, .overflow .modals .modal-form form .form-row .col, .overflow .modals .modal-form form .form-row .col-6 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -533,7 +541,7 @@ input::placeholder {
           flex-direction: column;
 }
 
-.overflow .modals .modal-form form .row .col input, .overflow .modals .modal-form form .row .col-12 input, .overflow .modals .modal-form form .form-row .col input, .overflow .modals .modal-form form .form-row .col-12 input {
+.overflow .modals .modal-form form .row .col input, .overflow .modals .modal-form form .row .col-6 input, .overflow .modals .modal-form form .form-row .col input, .overflow .modals .modal-form form .form-row .col-6 input {
   background-color: rgba(51, 56, 112, 0.02);
   border: 1px solid rgba(51, 56, 112, 0.05);
   border-radius: 1rem;
@@ -542,15 +550,19 @@ input::placeholder {
   padding: 0 1.25rem;
 }
 
-.overflow .modals .modal-form form .row .col label, .overflow .modals .modal-form form .row .col-12 label, .overflow .modals .modal-form form .form-row .col label, .overflow .modals .modal-form form .form-row .col-12 label {
+.overflow .modals .modal-form form .row .col label, .overflow .modals .modal-form form .row .col-6 label, .overflow .modals .modal-form form .form-row .col label, .overflow .modals .modal-form form .form-row .col-6 label {
   color: black;
   font-size: 0.875rem;
   padding-bottom: 0.375rem;
   font-weight: 400;
 }
 
-.overflow .modals .modal-form form .row .col label img, .overflow .modals .modal-form form .row .col-12 label img, .overflow .modals .modal-form form .form-row .col label img, .overflow .modals .modal-form form .form-row .col-12 label img {
+.overflow .modals .modal-form form .row .col label img, .overflow .modals .modal-form form .row .col-6 label img, .overflow .modals .modal-form form .form-row .col label img, .overflow .modals .modal-form form .form-row .col-6 label img {
   padding-left: 0.5313rem;
+}
+
+.overflow .modals .modal-form form .row .col-6, .overflow .modals .modal-form form .form-row .col-6 {
+  padding-right: 1.25rem;
 }
 
 .overflow .modals .modal-form form button {
@@ -1201,10 +1213,17 @@ header .profile-area > ul > li img {
       flex-shrink: 0;
   cursor: pointer;
   font-weight: 600;
+  -webkit-transition: all ease .3s;
+  transition: all ease .3s;
+}
+
+.table-filters button:hover {
+  opacity: 0.9;
 }
 
 .table-wrapper {
   padding: 2.1563rem 3.75rem 5.2813rem 3.75rem;
+  min-height: 30.75rem;
 }
 
 .table-wrapper table.dataTable {
