@@ -9,8 +9,8 @@ $.fn.InitTable = function (object) {
         lengthChange: false,
         dom: 'Rlfrtip',
         "language": {
-            "emptyTable":`<div class="no-data"><img src="/assets/images/noresult.png" alt=""> <span>No matching search results</span>  Try again using more general search terms</div>`,
-            "zeroRecords": `<div class="no-data"><img src="/assets/images/noresult.png" alt=""> <span>No matching search results</span>  Try again using more general search terms</div>`,
+            "emptyTable":`<div class="no-data"><img src="./assets/images/noresult.png" alt=""> <span>No matching search results</span>  Try again using more general search terms</div>`,
+            "zeroRecords": `<div class="no-data"><img src="./assets/images/noresult.png" alt=""> <span>No matching search results</span>  Try again using more general search terms</div>`,
         },
         order: [],
         responsive: true,
@@ -72,7 +72,7 @@ function setGrid(data) {
                     return `
                         <div class="mail-wrapper">
                             <div class="icon">
-                                <img src="/assets/images/dark-${item.email_provider}.svg">
+                                <img src="./assets/images/dark-${item.email_provider}.svg">
                             </div>
                             <span>${el}</span>    
                         </div>
@@ -117,7 +117,7 @@ function setGrid(data) {
                             </label>
                             
                             <div class="delete" data-id="${item['_id']}">
-                                <img src="/assets/images/menu-vertical.png" alt="">
+                                <img src="./assets/images/menu-vertical.png" alt="">
                                 <div class="sm-popup">
                                     <p>Delete</p>
                                 </div>
@@ -319,6 +319,18 @@ void
             }
         })
 
+        $('')
+
+        var number = $('form input[type="number"]')
+
+        number.onkeydown = function(e) {
+            if(!((e.keyCode > 95 && e.keyCode < 106 && e.keyCode == 190)
+            || (e.keyCode > 47 && e.keyCode < 58) 
+            || e.keyCode == 8)) {
+                return false;
+            }
+        }
+
 
         $('.open-check input[type="checkbox"]').on('click', function () {
             if ($(this).is(':checked')) {
@@ -329,6 +341,7 @@ void
         })
 
         $('.close').on('click', function () {
+            $('form')[0].reset();
             $('.overflow').removeClass('visible')
         })
 
@@ -350,14 +363,43 @@ void
         })
 
         $('.modals').on('click', 'button.close', function (e) {
+            $('form')[0].reset();            
             e.preventDefault()
             $(this).closest('.modals').find('close').click()
         })
 
 
         $('.modals').on('click', '.send.save', function (e) {
+
+            let required = $('.modal-wrapper input').filter('[required]:visible');
+
+            let allRequired = true;
+            required.each(function(){
+                if($(this).val() == ''){
+                    allRequired = false;
+                }
+            });
+
+            if(!allRequired){
+                return
+            }
+
             e.preventDefault()
             let data = {}
+            let validatedata = {}
+
+            $('.modal-wrapper .modal-form input').each((index, el)=> {
+                let input = $(el)
+                let key = input.attr('name')
+                let type = input.attr('type')
+                let noauth = input.attr('noauth')
+                let val = ''
+                if(type == 'checkbox') val = input.prop('checked') ? 'Y' : 'N'
+                else val = input.val()
+
+                if(val == '' || noauth == 'yes') return;
+                validatedata[key] = val
+            })
 
             $('.modal-wrapper .modal-form input').each((index, el)=> {
                 let input = $(el)
@@ -372,6 +414,8 @@ void
             })
 
             data.email_provider = email_provider
+            validatedata.email_provider = email_provider
+
 
             data.time_zone = new Date().toString().match(/([A-Z]+[\+-][0-9]+)/)[1]
 
@@ -381,7 +425,7 @@ void
             //     values.push(data[el])
             // })
 
-            validate_email_credentials(data, (resp) => {
+            validate_email_credentials(validatedata, (resp) => {
                 let message = ''    
                 resp.messages.forEach(msg=> {
                     message += msg+'<br/>'
@@ -474,6 +518,7 @@ void
         })
 
         $('.delete-popup .modal-title .close').on('click', function () {
+            $('form')[0].reset();
             $('.sm-popup').removeClass('active')
             $('.flow').removeClass('visible')
         })
