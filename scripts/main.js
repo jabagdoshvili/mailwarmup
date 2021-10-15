@@ -436,6 +436,11 @@ void
                 } else {
                     $('.modal-form.success p').html(message)
                     $('[tab="success"]').css('display', 'flex').click()
+
+
+                    add_email(data, resp=> {
+                        console.log(resp);
+                    })
                 }
             })
         })

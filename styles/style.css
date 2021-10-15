@@ -1300,7 +1300,6 @@ table.dataTable thead th {
 }
 
 table.dataTable tbody tr {
-  background-color: white;
   border-radius: 5rem;
   height: 3.75rem;
   border: 0;
@@ -1315,6 +1314,7 @@ table.dataTable tbody tr td {
   height: 3.75rem;
   font-size: 0.875rem;
   white-space: nowrap;
+  background-color: white;
 }
 
 table.dataTable tbody tr td:first-child,
