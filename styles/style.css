@@ -159,6 +159,12 @@ input::placeholder {
 
 .flow .modals .modal-title .close {
   cursor: pointer;
+  -webkit-transition: all ease 0.3s;
+  transition: all ease 0.3s;
+}
+
+.flow .modals .modal-title .close:hover {
+  opacity: 0.5;
 }
 
 .flow .modals .modal-body p {
@@ -197,6 +203,12 @@ input::placeholder {
           justify-content: center;
   border-radius: 16px;
   cursor: pointer;
+  -webkit-transition: all ease 0.3s;
+  transition: all ease 0.3s;
+}
+
+.flow .modals .modal-body .actions div:hover {
+  opacity: 0.5;
 }
 
 .flow .modals .modal-body .actions div:first-child {
@@ -1762,14 +1774,13 @@ input:checked + .slider:before {
   position: fixed;
   left: 0;
   top: 0;
-  height: 60px;
+  height: 45px;
   width: 100%;
-  border-radius: 1rem;
   padding: 0 0.375rem 0 1.25rem;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: white;
+  background-color: #fd8967;
   -webkit-box-shadow: 0 1.5625rem 2.5rem 0.3125rem rgba(0, 0, 0, 0.03);
           box-shadow: 0 1.5625rem 2.5rem 0.3125rem rgba(0, 0, 0, 0.03);
   display: -webkit-box;
@@ -1784,6 +1795,9 @@ input:checked + .slider:before {
           justify-content: center;
   align-items: center;
   z-index: 9999999999;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
 }
 
 .alert.visible {
