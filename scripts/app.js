@@ -79,7 +79,7 @@ $(document).ajaxSuccess(function (err, jqXHR, settings, thrownError) {
         $('.alert').addClass('visible')
         setTimeout(() => {
             $('.alert').removeClass('visible')
-        }, 1500);
+        }, 2000);
     }
 });
 
