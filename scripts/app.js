@@ -27,31 +27,31 @@ function authenticate(data, callback) {
 
 
 function get_all_user_emails(data, callback) {
-    ajax("POST", `/get_all_user_emails`, data).then(result => callback && callback(result))
+    ajax("POST", `get_all_user_emails`, data).then(result => callback && callback(result))
 }
 
 function pause_or_resume(data, callback) {
-    ajax("POST", `/pause_or_resume`, data).then(result => callback && callback(result))
+    ajax("POST", `pause_or_resume`, data).then(result => callback && callback(result))
 }
 
 function delete_user_email(data, callback) {
-    ajax("POST", `/delete_user_email`, data).then(result => callback && callback(result))
+    ajax("POST", `delete_user_email`, data).then(result => callback && callback(result))
 }
 
 function validate_email_credentials(data, callback) {
-    ajax("POST", `/validate_email_credentials`, data).done(result => callback && callback(result)).fail(result => callback && callback(JSON.parse(result.responseText)))
+    ajax("POST", `validate_email_credentials`, data).done(result => callback && callback(result)).fail(result => callback && callback(JSON.parse(result.responseText)))
 }
 
 function get_email_log(data, callback) {
-    ajax("POST", `/get_email_log`, data).then(result => callback && callback(result))
+    ajax("POST", `get_email_log`, data).then(result => callback && callback(result))
 }
 
 function get_individual_email_log(data, callback) {
-    ajax("POST", `/get_individual_email_log`, data).then(result => callback && callback(result))
+    ajax("POST", `get_individual_email_log`, data).then(result => callback && callback(result))
 }
 
 function add_email(data, callback) {
-    ajax("POST", `/add_email`, data).then(result => callback && callback(result))
+    ajax("POST", `add_email`, data).then(result => callback && callback(result))
 }
 
 

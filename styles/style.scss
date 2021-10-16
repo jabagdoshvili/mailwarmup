@@ -1061,7 +1061,11 @@ table.dataTable {
             position: relative;
             .delete {
                 position: absolute;
-                right: 1.25rem;
+                right: 0.75rem;
+                width: 1.25rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 .sm-popup {
                     position: absolute;
                     bottom: 0;
@@ -1265,7 +1269,7 @@ input:checked + .slider {
         align-items: center;
         flex-direction: column;
         margin-top: 50px;
-
+        margin-bottom: 50px;
         & > * {
             margin-bottom: 10px;
         }

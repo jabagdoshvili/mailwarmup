@@ -41,19 +41,19 @@ function getTableData() {
     })
 }
 
-authenticate({   
-    'pass_phrase' : 'fkm2gkWzAVn3YFuHUWUN',
-    "user_id": "dummy1",
-    'is_trial' : 'Y',
-    'plan_id' : 2,
-    'plan_quota' : 50,
-    'plan_expire_date' : '01-02-2021'
-}, (resp)=> {
-    $('body').attr('data-zoro_token', resp.data.token)
-    getTableData()
-})
+// authenticate({   
+//     'pass_phrase' : 'fkm2gkWzAVn3YFuHUWUN',
+//     "user_id": "dummy1",
+//     'is_trial' : 'Y',
+//     'plan_id' : 2,
+//     'plan_quota' : 50,
+//     'plan_expire_date' : '01-02-2021'
+// }, (resp)=> {
+//     $('body').attr('data-zoro_token', resp.data.token)
+//     getTableData()
+// })
 
-
+getTableData()
 
 
 function setGrid(data) {
@@ -138,7 +138,7 @@ function setGrid(data) {
 function filerDateRange() {
     let filtered = response
     if (_endDate != '' && _startDate != '') {
-        filtered = response.filter(e => new Date(e.added_date) >= new Date(_startDate) && new Date(e.added_date) <= new Date(_endDate))
+        filtered = response.filter(e => new Date(e.added_date.replace(/\-/g, '/')) >= new Date(_startDate) && new Date(e.added_date.replace(/\-/g, '/')) <= new Date(_endDate))
     }
 
     return filtered
@@ -476,6 +476,7 @@ void
         })
 
         $(document).on('click', function () {
+            $('form')[0].reset();
             $('.overflow:not(.mail-inside).visible').removeClass('visible')
         })
 
@@ -511,6 +512,7 @@ void
         $(document).on('click', '.delete', function () {
             id = $(this).data('id')
 
+            $('.sm-popup').removeClass('active')
             $(this).find('.sm-popup').toggleClass('active')
 
         })

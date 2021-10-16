@@ -1331,7 +1331,17 @@ table.dataTable tbody tr th:last-child {
 table.dataTable tbody tr td:last-child .delete,
 table.dataTable tbody tr th:last-child .delete {
   position: absolute;
-  right: 1.25rem;
+  right: 0.75rem;
+  width: 1.25rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 table.dataTable tbody tr td:last-child .delete .sm-popup,
@@ -1599,6 +1609,7 @@ input:checked + .slider:before {
       -ms-flex-direction: column;
           flex-direction: column;
   margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .dataTables_empty .no-data > * {
