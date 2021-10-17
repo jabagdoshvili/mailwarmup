@@ -307,7 +307,7 @@ void
             } else {
                 $('.mail-inside').addClass('visible')
                 $('.accordion').empty()
-                get_email_log({ send_mail_id_pk: 'cqe' }, resp => {
+                get_email_log({ send_mail_id_pk }, resp => {
                     resp.data.log.forEach((el, i)=> {
                         let {log_id, date, description} = el
                         let logContainer = getLogContainer(log_id, date, description)
@@ -417,7 +417,7 @@ void
             validatedata.email_provider = email_provider
 
 
-            data.time_zone = new Date().toString().match(/([A-Z]+[\+-][0-9]+)/)[1]
+            // data.time_zone = new Date().toString().match(/([A-Z]+[\+-][0-9]+)/)[1]
 
             // let lastStep = ['starting_baseline','increase_per_day','max_sends_per_day','reply_rate_%']
             // let values = [] 
@@ -434,12 +434,18 @@ void
                     $('.modal-form.error p').html(message)
                     $('[tab="error"]').css('display', 'flex').click()
                 } else {
-                    $('.modal-form.success p').html(message)
-                    $('[tab="success"]').css('display', 'flex').click()
-
-
-                    add_email(data, resp=> {
-                        console.log(resp);
+                    message = ''
+                    add_email(data, (respo) => {
+                        respo.messages.forEach(msgs=> {
+                            message += msgs+'<br/>'
+                        })
+                        if(respo.error == 'Y') {
+                            $('.modal-form.error p').html(message)
+                            $('[tab="error"]').css('display', 'flex').click()
+                        } else {
+                            $('.modal-form.success p').html(message)
+                            $('[tab="success"]').css('display', 'flex').click()
+                        }
                     })
                 }
             })

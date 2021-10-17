@@ -75,7 +75,7 @@ $(document).ajaxComplete(function () {$('.loader').removeClass('visible')});
 
 $(document).ajaxSuccess(function (err, jqXHR, settings, thrownError) {
     let isPost = ['POST'].includes(settings.type)
-    if ((isPost && !settings.url.includes('authenticate')) && (isPost && !settings.url.includes('get'))) {
+    if ((isPost && !settings.url.includes('authenticate')) && (isPost && !settings.url.includes('get')) && (isPost && !settings.url.includes('validate_email_credentials')) && (isPost && !settings.url.includes('add_email'))) {
         $('.alert').addClass('visible')
         setTimeout(() => {
             $('.alert').removeClass('visible')
